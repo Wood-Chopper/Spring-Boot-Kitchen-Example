@@ -1,0 +1,43 @@
+@startuml
+
+hide circle
+
+entity "Recipe" as r {
+    * id
+    --
+    * name: varchar
+}
+
+entity "Quantity" as q {
+    * recipeId: FK
+    * ingredientId: FK
+    --
+    * quantity: number
+    * unit: varchar
+}
+
+entity "Ingredient" as i {
+    * id
+    --
+    * name: varchar
+}
+
+entity "Chef" as c {
+    * id
+    --
+    * name: varchar
+    * stars: number
+}
+
+entity "Kitchen" as k {
+    * id
+    --
+    * city: varchar
+}
+
+r||--o{q
+q}o--||i
+r}o--o|c
+c|o--o|k
+c}o--o{i
+@enduml
